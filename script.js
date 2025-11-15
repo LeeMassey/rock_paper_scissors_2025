@@ -2,6 +2,14 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     let round = 1;
+    let humanChoiceButtons = document.querySelectorAll('.human-choice-buttons');
+    let results = document.querySelector('#results');
+
+    for (const e of humanChoiceButtons) {
+        e.addEventListener('click', () => {
+            playRound(getComputerChoice(), e.id);
+        });
+    }
 
     function getComputerChoice() {
         const choices = ['rock', 'paper', 'scissors'];
@@ -9,20 +17,16 @@ function playGame() {
         return choices[randomIndex];
     }  
 
-    function getHumanChoice() {
-        const choice = prompt('Rock, Paper, or Scissors?');
-        return choice.toLowerCase();
-    }
-
     function playRound(computerChoice, humanChoice) {
+        alert(computerChoice + ', ' + humanChoice);
         let res = 'Computer: ' + computerChoice + ' | Human: ' + humanChoice + ' | ';
         let winnerChoice;
         let loserChoice;
         let winner;
         if (computerChoice === humanChoice) {
-            return res += 'It\'s a tie! Human Score: ' + humanScore + ' | Computer Score: ' + computerScore;
+            res += 'It\'s a tie! Human Score: ' + humanScore + ' | Computer Score: ' + computerScore;
         }
-        if (((computerChoice === 'rock') && (humanChoice === 'scissors')) || 
+        else if (((computerChoice === 'rock') && (humanChoice === 'scissors')) || 
             ((computerChoice === 'paper') && (humanChoice === 'rock')) || 
             ((computerChoice === 'scissors') && (humanChoice === 'paper'))) {
                 winnerChoice = computerChoice;
@@ -36,13 +40,19 @@ function playGame() {
             winner = 'Human';
             humanScore++;
         }
-        return res += winnerChoice + ' beats ' + loserChoice + '. ' + winner + ' wins this round! Human Score: ' + humanScore + ' | Computer Score: ' + computerScore;
+
+        if (winner) {
+            res += winnerChoice + ' beats ' + loserChoice + '. ' + winner + ' wins this round! Human Score: ' + humanScore + ' | Computer Score: ' + computerScore;
+        }
+
+        results.textContent = res;
+
     }
 
-    while (round <= 5) {
-        console.log(playRound(getComputerChoice(), getHumanChoice()));
-        round++;
-    }
+//     while (round <= 5) {
+//         console.log(playRound(getComputerChoice(), getHumanChoice()));
+//         round++;
+//     }
 }
 
 playGame();
