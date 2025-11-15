@@ -1,0 +1,28 @@
+#container {
+    background-color: cornflowerblue;
+    border: 2px solid black;
+    border-radius: 15px;
+    text-align: center;
+    width: 65%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+#buttons {
+    display: flex;
+}
+
+.human-choice-buttons {
+    flex: 1;
+    aspect-ratio: 3/1;
+}
+
+#results {
+    min-height: 200px;
+    font-size: 2em;
+}
+
+#display-winner {
+    font-size: 3em;
+    font-weight: 900;
+}
