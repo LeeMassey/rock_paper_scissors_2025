@@ -93,7 +93,7 @@ function playGame() {
                 computerScore++;
             }
             else {
-                roundResult = capitalize(humanChoice) + ' beats ' + computerChoice + '. Human wins this round!';
+                roundResult = capitalize(humanChoice) + ' beats ' + computerChoice + '. You win this round!';
                 humanScore++;
             }
 
